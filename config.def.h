@@ -15,9 +15,6 @@ static const int swallowfloating    = 1;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
-static int tagindicatortype              = INDICATOR_NONE;
-static int tiledindicatortype            = INDICATOR_NONE;
-static int floatindicatortype            = INDICATOR_NONE;
 static const char *fonts[]          = { FONT":size=10:style=normal" };
 static const char dmenufont[]       = FONT":size=10:style=normal";
 
@@ -47,8 +44,8 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *alttags[] = { "<01>", "<02>", "<03>", "<04>", "<05>" };
+static const char *tags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+static const char *alttags[] = { "一", "二", "三", "四", "五", "六", "七", "八", "九" };
 
 /* Lockfile */
 static char lockfile[] = "/tmp/dwm.lock";
