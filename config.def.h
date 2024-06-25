@@ -18,9 +18,9 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { FONT":size=10:style=normal" };
 static const char dmenufont[]       = FONT":size=10:style=normal";
 
-static const char col_gray1[]       = "#1f1d2e";
-static const char col_gray2[]       = "#524f67";
-static const char col_gray3[]       = "#6e6a86";
+static const char col_gray1[]       = "#191724";
+static const char col_gray2[]       = "#26233a";
+static const char col_gray3[]       = "#908caa";
 static const char col_gray4[]       = "#e0def4";
 static const char col_cyan[]        = "#524f67";
 static const char *colors[][3]      = {
