@@ -20,15 +20,15 @@ void exitdwm ()
 # endif
 
 # define S_LOCK "Lock"
-# define S_RESTART_DWM "restart Dwm"
+# define S_RESTART_DWM "Restart DWM"
 # define S_EXIT "Exit"
 # define S_REBOOT "Reboot"
 # define S_SHUTDOWN "Shutdown"
-# define S_LOCK_ICON "\uf023"			// <= FontAwesome icons
-# define S_RESTART_DWM_ICON "\uf01e"
-# define S_EXIT_ICON "\uf2f5"
-# define S_REBOOT_ICON "\uf021"
-# define S_SHUTDOWN_ICON "\uf011"
+# define S_LOCK_ICON ""			// <= FontAwesome icons
+# define S_RESTART_DWM_ICON ""
+# define S_EXIT_ICON ""
+# define S_REBOOT_ICON ""
+# define S_SHUTDOWN_ICON ""
 
 # define S_FORMAT(ACTION) S_##ACTION##_ICON " " S_##ACTION
 # define S_FORMAT_CLEAR "sed 's/^..//'"
@@ -56,8 +56,14 @@ void exitdwm ()
 	}
 
 	if (strcmp (exit_action, S_LOCK) == 0) system ("slock & sleep .5; xset dpms force off");
-	else if (strcmp (exit_action, S_RESTART_DWM) == 0) quit (& (const Arg) {1});
-	else if (strcmp (exit_action, S_EXIT) == 0) quit (& (const Arg) {0});
+	else if (strcmp (exit_action, S_RESTART_DWM) == 0) {
+    quit (& (const Arg) {1});
+    quit (& (const Arg) {1});
+  }
+	else if (strcmp (exit_action, S_EXIT) == 0) {
+    quit (& (const Arg) {0});
+    quit (& (const Arg) {0});
+  }
 	else if (strcmp (exit_action, S_REBOOT) == 0) system ("systemctl reboot");
 	else if (strcmp (exit_action, S_SHUTDOWN) == 0) system ("systemctl poweroff -i");
 
