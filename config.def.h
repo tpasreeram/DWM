@@ -23,6 +23,9 @@ static const char *colors[][3]      = {
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const char *alttags[] = { "<01>", "<02>", "<03>", "<04>", "<05>" };
 
+/* Lockfile */
+static char lockfile[] = "/tmp/dwm.lock";
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
