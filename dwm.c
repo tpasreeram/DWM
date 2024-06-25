@@ -451,9 +451,15 @@ buttonpress(XEvent *e)
 		for (c = m->clients; c; c = c->next)
 			occ |= c->tags;
 
-		do
+    unsigned int occ = 0;
+    for(c = m->clients; c; c=c->next)
+      occ |= c-> tags == TAGMASK ? 0 : c->tags;
+    do {
+      /* Do not reserve space for vacant tags*/
+      if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+        continue;
 			x += TEXTW(occ & 1 << i ? alttags[i] : tags[i]);
-		while (ev->x >= x && ++i < LENGTH(tags));
+    } while (ev->x >= x && ++i < LENGTH(tags));
 		if (i < LENGTH(tags)) {
 			click = ClkTagBar;
 			arg.ui = 1 << i;
@@ -734,12 +740,15 @@ drawbar(Monitor *m)
 	}
 
 	for (c = m->clients; c; c = c->next) {
-		occ |= c->tags;
+		occ |= c->tags == TAGMASK ? 0 : c->tags;
 		if (c->isurgent)
 			urg |= c->tags;
 	}
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
+    /* Do not draw vacant tags */
+    if(!(occ & 1 << i || m->tagset[m->seltags] & 1 << i))
+      continue;
 		tagtext = occ & 1 << i ? alttags[i] : tags[i];
 		w = TEXTW(tagtext);
  		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
