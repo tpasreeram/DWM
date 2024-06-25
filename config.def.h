@@ -84,6 +84,10 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
+#include <X11/XF86keysym.h>
+#include "movestack.c"
+#include "exitdwm.c"
+
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -108,9 +112,6 @@ static const char *dmenucmd[] = {
 };
 static const char *termcmd[]  = { "alacritty", NULL };
 
-#include <X11/XF86keysym.h>
-#include "movestack.c"
-#include "exitdwm.c"
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ 0,                            XF86XK_Launch3, exitdwm,   {0} },
