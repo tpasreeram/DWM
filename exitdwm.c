@@ -19,12 +19,12 @@ void exitdwm ()
 # error (conflicting macro names)
 # endif
 
-# define S_LOCK "Lock"
+# define S_LOCK "Sleep"
 # define S_RESTART_DWM "Restart DWM"
 # define S_EXIT "Exit"
 # define S_REBOOT "Reboot"
 # define S_SHUTDOWN "Shutdown"
-# define S_LOCK_ICON ""			// <= FontAwesome icons
+# define S_LOCK_ICON "󰤄"			// <= FontAwesome icons
 # define S_RESTART_DWM_ICON ""
 # define S_EXIT_ICON ""
 # define S_REBOOT_ICON ""
@@ -55,7 +55,7 @@ void exitdwm ()
 		goto close_streams;
 	}
 
-	if (strcmp (exit_action, S_LOCK) == 0) system ("slock & sleep .5; xset dpms force off");
+	if (strcmp (exit_action, S_LOCK) == 0) system ("systemctl suspend");
 	else if (strcmp (exit_action, S_RESTART_DWM) == 0) {
     quit (& (const Arg) {1});
     quit (& (const Arg) {1});
